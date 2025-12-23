@@ -37,6 +37,26 @@
     <!-- Custom Teacher Image Styles
 	================================================== -->
     <style>
+        /* Disclaimer Banner */
+        .disclaimer-banner {
+            background: rgba(255, 193, 7, 0.95);
+            color: #333;
+            padding: 10px 20px;
+            font-size: 13px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-weight: 500;
+        }
+
+        body {
+            padding-top: 40px;
+        }
+
         .teacher-profile-image {
             max-width: 100%;
             height: auto;
@@ -62,7 +82,92 @@
             top: -0.5em;
         }
 
+        /* Book Carousel Styles */
+        .book-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .book-carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .book-slide {
+            min-width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .book-slide img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            pointer-events: none;
+        }
+
+        .carousel-btn {
+            background: rgba(57, 181, 74, 0.9);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            pointer-events: all;
+            transition: background 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(57, 181, 74, 1);
+        }
+
+        .carousel-dots {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .carousel-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: #39b54a;
+        }
+
         @media only screen and (max-width: 768px) {
+            .disclaimer-banner {
+                font-size: 11px;
+                padding: 8px 15px;
+            }
+
+            body {
+                padding-top: 35px;
+            }
+
             .teacher-profile-image {
                 margin-top: 40px;
                 max-width: 80%;
@@ -78,6 +183,12 @@
             .plan-block-price sup {
                 font-size: 1.2rem !important;
             }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
         }
     </style>
 
@@ -85,7 +196,12 @@
 
 <body id="top">
 
-    <!-- header 
+    <!-- Disclaimer Banner -->
+    <div class="disclaimer-banner">
+        Reading Literature with Mathematical Thinking — This website is created for practice purposes and is not an official or factual information source.
+    </div>
+
+    <!-- header
    ================================================== -->
    <header id="header" class="row">   
 
@@ -334,8 +450,41 @@
 
         <div class="row about-bottom-image">
 
-           <img src="images/book.png"
-                alt="精選英文小說" data-aos="fade-up">
+            <div class="book-carousel" data-aos="fade-up">
+                <div class="book-carousel-inner" id="bookCarouselInner">
+                    <div class="book-slide">
+                        <img src="images/book1.png" alt="精選英文小說 1">
+                    </div>
+                    <div class="book-slide">
+                        <img src="images/book2.png" alt="精選英文小說 2">
+                    </div>
+                    <div class="book-slide">
+                        <img src="images/book3.png" alt="精選英文小說 3">
+                    </div>
+                    <div class="book-slide">
+                        <img src="images/book4.png" alt="精選英文小說 4">
+                    </div>
+                    <div class="book-slide">
+                        <img src="images/book5.png" alt="精選英文小說 5">
+                    </div>
+                    <div class="book-slide">
+                        <img src="images/book6.png" alt="精選英文小說 6">
+                    </div>
+                    <div class="book-slide">
+                        <img src="images/book7.png" alt="精選英文小說 7">
+                    </div>
+                    <div class="book-slide">
+                        <img src="images/book8.png" alt="精選英文小說 8">
+                    </div>
+                </div>
+
+                <div class="carousel-controls">
+                    <button class="carousel-btn" onclick="prevSlide()">‹</button>
+                    <button class="carousel-btn" onclick="nextSlide()">›</button>
+                </div>
+
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
 
         </div>  <!-- end about-bottom-image -->       
         
@@ -362,7 +511,7 @@
 
                             <div class="plan-top-part">
                                 <h3 class="plan-block-title">體驗方案</h3>
-                                <p class="plan-block-price"><sup>NT$</sup>2,026</p>
+                                <p class="plan-block-price"><sup>NT$</sup>1,729</p>
                                 <p class="plan-block-per">單次課程</p>
                             </div>
 
@@ -385,7 +534,7 @@
 
                             <div class="plan-top-part">
                                 <h3 class="plan-block-title">深度學習方案</h3>
-                                <p class="plan-block-price"><sup>NT$</sup>6,202</p>
+                                <p class="plan-block-price"><sup>NT$</sup>9,271</p>
                                 <p class="plan-block-per">每月 4 堂課</p>
                             </div>
 
@@ -614,6 +763,51 @@
     <script src="js/jquery-2.1.3.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- Book Carousel Script -->
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 8;
+        const carouselInner = document.getElementById('bookCarouselInner');
+        const dotsContainer = document.getElementById('carouselDots');
+
+        // Create dots
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('span');
+            dot.className = 'carousel-dot';
+            if (i === 0) dot.classList.add('active');
+            dot.onclick = () => goToSlide(i);
+            dotsContainer.appendChild(dot);
+        }
+
+        function updateCarousel() {
+            carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // Update dots
+            const dots = document.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        // Auto-play carousel every 5 seconds
+        setInterval(nextSlide, 5000);
+    </script>
 
 </body>
 
