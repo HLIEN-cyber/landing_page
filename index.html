@@ -91,9 +91,25 @@
             overflow: hidden;
         }
 
+        .book-carousel::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: url('images/bookall.png') center bottom no-repeat;
+            background-size: contain;
+            opacity: 0.5;
+            z-index: 0;
+            pointer-events: none;
+        }
+
         .book-carousel-inner {
             display: flex;
             transition: transform 0.5s ease-in-out;
+            position: relative;
+            z-index: 1;
         }
 
         .book-slide {
@@ -119,6 +135,7 @@
             justify-content: space-between;
             padding: 0 20px;
             pointer-events: none;
+            z-index: 2;
         }
 
         .carousel-btn {
@@ -141,6 +158,8 @@
         .carousel-dots {
             text-align: center;
             margin-top: 20px;
+            position: relative;
+            z-index: 2;
         }
 
         .carousel-dot {
