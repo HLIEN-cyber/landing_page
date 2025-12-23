@@ -85,23 +85,8 @@
         /* Book Carousel Styles */
         .row.about-bottom-image {
             position: relative;
-            padding-bottom: 300px;
+            padding: 60px 0 80px 0;
             overflow: visible;
-        }
-
-        .row.about-bottom-image::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100vw;
-            height: 300px;
-            background: url('images/bookall.png') center bottom no-repeat;
-            background-size: 100% auto;
-            opacity: 0.6;
-            z-index: -1;
-            pointer-events: none;
         }
 
         .book-carousel {
@@ -109,14 +94,29 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
+            min-height: 500px;
             z-index: 1;
+        }
+
+        /* Background books container */
+        .book-carousel::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 400px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.05) 50%, rgba(255,255,255,0) 100%);
+            z-index: 0;
+            border-radius: 10px;
         }
 
         .book-carousel-inner {
             display: flex;
             transition: transform 0.5s ease-in-out;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
         .book-slide {
@@ -124,14 +124,62 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+            padding: 40px 0;
         }
 
+        /* Main focused book */
         .book-slide img {
             max-width: 25%;
             height: auto;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 3;
+            transition: transform 0.3s ease;
         }
+
+        .book-slide img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Background books - decorative */
+        .book-slide::before,
+        .book-slide::after {
+            content: '';
+            position: absolute;
+            width: 15%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 1;
+        }
+
+        .book-slide:nth-child(1)::before { background-image: url('images/book2.png'); left: 15%; top: 20%; transform: rotate(-5deg); }
+        .book-slide:nth-child(1)::after { background-image: url('images/book3.png'); right: 15%; top: 25%; transform: rotate(5deg); }
+
+        .book-slide:nth-child(2)::before { background-image: url('images/book1.png'); left: 15%; top: 20%; transform: rotate(-5deg); }
+        .book-slide:nth-child(2)::after { background-image: url('images/book4.png'); right: 15%; top: 25%; transform: rotate(5deg); }
+
+        .book-slide:nth-child(3)::before { background-image: url('images/book5.png'); left: 15%; top: 20%; transform: rotate(-5deg); }
+        .book-slide:nth-child(3)::after { background-image: url('images/book2.png'); right: 15%; top: 25%; transform: rotate(5deg); }
+
+        .book-slide:nth-child(4)::before { background-image: url('images/book6.png'); left: 15%; top: 20%; transform: rotate(-5deg); }
+        .book-slide:nth-child(4)::after { background-image: url('images/book1.png'); right: 15%; top: 25%; transform: rotate(5deg); }
+
+        .book-slide:nth-child(5)::before { background-image: url('images/book7.png'); left: 15%; top: 20%; transform: rotate(-5deg); }
+        .book-slide:nth-child(5)::after { background-image: url('images/book3.png'); right: 15%; top: 25%; transform: rotate(5deg); }
+
+        .book-slide:nth-child(6)::before { background-image: url('images/book8.png'); left: 15%; top: 20%; transform: rotate(-5deg); }
+        .book-slide:nth-child(6)::after { background-image: url('images/book4.png'); right: 15%; top: 25%; transform: rotate(5deg); }
+
+        .book-slide:nth-child(7)::before { background-image: url('images/book2.png'); left: 15%; top: 20%; transform: rotate(-5deg); }
+        .book-slide:nth-child(7)::after { background-image: url('images/book5.png'); right: 15%; top: 25%; transform: rotate(5deg); }
+
+        .book-slide:nth-child(8)::before { background-image: url('images/book1.png'); left: 15%; top: 20%; transform: rotate(-5deg); }
+        .book-slide:nth-child(8)::after { background-image: url('images/book6.png'); right: 15%; top: 25%; transform: rotate(5deg); }
 
         .carousel-controls {
             position: absolute;
