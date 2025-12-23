@@ -83,27 +83,32 @@
         }
 
         /* Book Carousel Styles */
-        .book-carousel {
+        .row.about-bottom-image {
             position: relative;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            overflow: hidden;
+            padding-bottom: 100px;
         }
 
-        .book-carousel::before {
+        .row.about-bottom-image::before {
             content: '';
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
             width: 100vw;
-            height: 200px;
+            height: 250px;
             background: url('images/bookall.png') center bottom no-repeat;
             background-size: cover;
             opacity: 0.5;
             z-index: 0;
             pointer-events: none;
+        }
+
+        .book-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            z-index: 1;
         }
 
         .book-carousel-inner {
