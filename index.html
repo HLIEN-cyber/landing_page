@@ -85,7 +85,8 @@
         /* Book Carousel Styles */
         .row.about-bottom-image {
             position: relative;
-            padding-bottom: 100px;
+            padding-bottom: 300px;
+            overflow: visible;
         }
 
         .row.about-bottom-image::before {
@@ -95,11 +96,11 @@
             left: 50%;
             transform: translateX(-50%);
             width: 100vw;
-            height: 250px;
+            height: 300px;
             background: url('images/bookall.png') center bottom no-repeat;
-            background-size: cover;
-            opacity: 0.5;
-            z-index: 0;
+            background-size: 100% auto;
+            opacity: 0.6;
+            z-index: -1;
             pointer-events: none;
         }
 
